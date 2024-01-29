@@ -24,6 +24,11 @@ TEST_CASE( "Test bitset construction size", "[bitset]" ) {
     REQUIRE(b.good());
 }
 
+TEST_CASE("Test bitset construction invalid size", "[bitset]"){
+    Bitset b(-1);
+    REQUIRE_FALSE(b.good());
+}
+
 TEST_CASE( "Test bitset construction string", "[bitset]" ) {
     std::string s("00101110000011000001101000001");
     Bitset b(s);
@@ -57,6 +62,16 @@ TEST_CASE( "Test set with size init", "[bitset]" ) {
     REQUIRE(b.asString().compare(s) == 0);
 }
 
+TEST_CASE( "Test set with invalid index", "[bitset]" ){
+    Bitset b;
+    b.set(9);
+    REQUIRE_FALSE(b.good());
+
+    Bitset c;
+    c.set(-1);
+    REQUIRE_FALSE(c.good());
+}
+
 TEST_CASE( "Test size", "[bitset]" ) {
     std::string s("0000000");
     Bitset b(s);
@@ -76,8 +91,19 @@ TEST_CASE("Test reset"){
     std::string target("111110");
     Bitset b(s);
     b.reset(5);
-    REQUIRE(b.asString().compare(s) == 0);
+    REQUIRE(b.asString().compare(target) == 0);
 
+}
+
+TEST_CASE( "Test reset with invalid index", "[bitset]" ){
+    std::string s("111");
+    Bitset b(s);
+    b.reset(9);
+    REQUIRE_FALSE(b.good());
+
+    Bitset c(s);
+    c.reset(-1);
+    REQUIRE_FALSE(c.good());
 }
 
 TEST_CASE("Test toggle"){
@@ -87,6 +113,17 @@ TEST_CASE("Test toggle"){
     REQUIRE(b.asString().compare("1") == 0);
     b.toggle(0);
     REQUIRE(b.asString().compare("0") == 0);
+}
+
+TEST_CASE( "Test toggle with invalid index", "[bitset]" ){
+    std::string s("111");
+    Bitset b(s);
+    b.toggle(9);
+    REQUIRE_FALSE(b.good());
+
+    Bitset c(s);
+    c.toggle(-1);
+    REQUIRE_FALSE(c.good());
 }
 
 TEST_CASE( "Test combined", "[bitset]" ) {

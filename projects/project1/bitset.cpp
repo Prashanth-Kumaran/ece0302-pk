@@ -15,10 +15,18 @@ Bitset::Bitset(intmax_t size)
 {
     // Constructor with size argument, all bits set to 0
     bitsetSize = size;
-    bitsetPtr = new uint8_t[bitsetSize];
-    for (int i = 0; i < 8; i++)
+    if (size <= 0)
     {
-        *(bitsetPtr + i) = 0;
+        bitsetValidity = false;
+        bitsetPtr = new uint8_t[8];
+    }
+    else
+    {
+        bitsetPtr = new uint8_t[bitsetSize];
+        for (int i = 0; i < size; i++)
+        {
+            *(bitsetPtr + i) = 0;
+        }
     }
 }
 
