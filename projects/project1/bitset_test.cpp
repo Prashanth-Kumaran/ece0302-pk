@@ -57,6 +57,38 @@ TEST_CASE( "Test set with size init", "[bitset]" ) {
     REQUIRE(b.asString().compare(s) == 0);
 }
 
+TEST_CASE( "Test size", "[bitset]" ) {
+    std::string s("0000000");
+    Bitset b(s);
+    REQUIRE(b.size() == 7);
+    REQUIRE(b.good());
+}
+
+TEST_CASE("Test good", "[bitset]"){
+    Bitset b(5);
+    REQUIRE(b.good());
+    b.set(6);
+    REQUIRE_FALSE(b.good());
+}
+
+TEST_CASE("Test reset"){
+    std::string s("111111");
+    std::string target("111110");
+    Bitset b(s);
+    b.reset(5);
+    REQUIRE(b.asString().compare(s) == 0);
+
+}
+
+TEST_CASE("Test toggle"){
+    Bitset b(1);
+    REQUIRE(b.asString().compare("0") == 0);
+    b.toggle(0);
+    REQUIRE(b.asString().compare("1") == 0);
+    b.toggle(0);
+    REQUIRE(b.asString().compare("0") == 0);
+}
+
 TEST_CASE( "Test combined", "[bitset]" ) {
     std::string s((1<<15) + 3, '0');
     Bitset b(s);
@@ -74,3 +106,4 @@ TEST_CASE( "Test combined", "[bitset]" ) {
         REQUIRE(((b.test(i + (1<<11)) == true && s.at(i + (1<<11)) == '0') || (b.test(i + (1<<11)) == false && s.at(i + (1<<11)) == '1')));
     }
 }
+
