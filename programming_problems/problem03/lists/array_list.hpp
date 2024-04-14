@@ -45,9 +45,11 @@ public:
   void setEntry(std::size_t position, const T& newValue);
 
 private:
+    //size of the list
+    size_t length;
+    //Pointer to the array
+    T* listPtr;
 
-  // TODO
-  
 };
 
 #include "array_list.tpp"

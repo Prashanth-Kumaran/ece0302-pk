@@ -46,8 +46,9 @@ public:
 
 private:
 
-  //TODO
-  
+  Node<T>* headPtr;
+  size_t itemCount;
+
 };
 
 #include "linked_list.tpp"

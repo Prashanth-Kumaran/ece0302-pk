@@ -7,6 +7,8 @@ template <typename T>
 class DynamicBag: public AbstractBag<T>
 {
 public:
+
+
   // default constructor
   DynamicBag();
   
@@ -44,8 +46,11 @@ public:
   bool contains(const T& item) const;
 
 private:
+  //Size of dynamically allocated memory for the bag
+  int capacity;
+  size_t size;
+  T *bag_ptr;
 
-  // TODO
 };
 
 #include "dynamic_bag.tpp"

@@ -8,8 +8,15 @@ class FindPalindrome{
 
 private:
 	// private stuff that you define and implement goes here...
-	
-	// ...
+	int count = 0;
+	// **Vector which stores inputted strings
+    std::vector<std::string> inputStringVector;
+    // **Blank candidate vector
+    std::vector<std::string> candidateStringVector;
+    // **Vector of Valid Palindromes
+    std::vector<std::vector<std::string>> palindromeVector;
+
+    
 	
 	// private stuff that you are given or is specified in the project
 	// description...

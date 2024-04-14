@@ -50,6 +50,7 @@ TEST_CASE( "Test set", "[bitset]" ) {
     b.set(7);
     REQUIRE(b.size() == 8);
     REQUIRE(b.good());
+    std::string q = b.asString();
     REQUIRE(b.asString().compare(s) == 0);
 }
 

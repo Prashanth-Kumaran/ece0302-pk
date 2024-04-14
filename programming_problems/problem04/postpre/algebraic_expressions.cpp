@@ -1,6 +1,9 @@
 #include <string>
 using std::string;
-
+#include <stack>
+using std::stack;
+#include <vector>
+using std::vector;
 #include <iostream>
 
 #include <cctype> // for isalpha
@@ -42,7 +45,23 @@ bool isPost(string s) {
 }
 
 void convert(string &postfix, string &prefix) {
+    
+     stack<string, vector<string>> expressionStack;
 
-  // TODO
+         // loop through the postfix string
+    for (char c : postfix) {
+        // If character is an operand, push it onto the stack
+        if (!isoperator(c)) {
+            expressionStack.push(std::string(1, c)); // Convert char to string and push onto stack
+        } else {
+            // If character is an operator, pop two operands from stack, concatenate them with the operator, and push back
+            std::string operand2 = expressionStack.top();
+            expressionStack.pop();
+            std::string operand1 = expressionStack.top();
+            expressionStack.pop();
+            prefix = c + operand1 + operand2; // Construct prefix expression
+            expressionStack.push(prefix);
+        }
+    }
   
 }

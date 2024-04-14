@@ -9,7 +9,7 @@
 template <typename KeyType, typename ItemType>
 class BinarySearchTree
 {
-public:
+public: 
     BinarySearchTree();
     BinarySearchTree(const BinarySearchTree& rhs);
     BinarySearchTree& operator=(BinarySearchTree rhs);

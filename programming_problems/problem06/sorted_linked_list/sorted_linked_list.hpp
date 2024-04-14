@@ -52,7 +52,7 @@ public:
 
 private:
 
-  // TODO
+  //No additional private members needed :)
 
 };
 

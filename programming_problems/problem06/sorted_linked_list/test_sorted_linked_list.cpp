@@ -8,6 +8,30 @@ typedef SortedLinkedList<char> ListType;
 
 template class SortedLinkedList<int>;
 
+TEST_CASE("Testing with ints", "[sorted linked list]"){
+    SortedLinkedList<int> lst;
+    lst.insert(87);
+    lst.insert(10);
+    lst.insert(17);
+
+    REQUIRE(!lst.isEmpty());
+    REQUIRE(lst.getPosition(10) == 0);
+    REQUIRE(lst.getEntry(2) == 87);
+    
+}
+
+TEST_CASE("Testing with strings", "[sorted linked list]"){
+    SortedLinkedList<std::string> lst;
+    lst.insert("Pens");
+    lst.insert("Bolts");
+    lst.insert("Leafs");
+
+    REQUIRE(!lst.isEmpty());
+    REQUIRE(lst.getPosition("Bolts") == 0);
+    REQUIRE(lst.getEntry(2) == "Pens");
+    
+}
+
 TEST_CASE("Testing isEmpty", "[sorted linked list]") {
   ListType lst;
   REQUIRE(lst.isEmpty());
